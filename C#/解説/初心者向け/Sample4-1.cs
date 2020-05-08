@@ -320,9 +320,10 @@ namespace CSharpSample4_1
                 int numRead;
 
                 // 非同期に読み込む
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);  // UWPやNet Coreでshift-jis扱う場合はこいつが必要
                 while ((numRead = await ReadStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
                 {
-                    string text = System.Text.Encoding.GetEncoding(932).GetString(buffer);
+                    string text = System.Text.Encoding.GetEncoding("Shift_JIS").GetString(buffer);
                     sb.Append(text);
                 }
 
