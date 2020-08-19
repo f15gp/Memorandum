@@ -1,2 +1,2 @@
 # Memorandum
-f15gpの備忘録
+f15gpの備忘録(メモ)
