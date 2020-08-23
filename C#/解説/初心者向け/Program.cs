@@ -82,15 +82,15 @@ namespace 初心者向け
             // var inter = new ISample(); インターフェースだからこれ無理
             var mc = new MulCalc();
             mc.Calc(3, 5);
-            Console.WriteLine("計算結果 : {0}", mc.result);
+            Console.WriteLine("計算結果 : {0}", mc.Result);
 
             // インターフェースと抽象クラスの使い分け
             // 1. インターフェースは多重継承できる。でも抽象クラスと違ってメソッド実装ができない
-            // 2. 使う側からみた振る舞い(メソッド)の共通化が行いたいだけならインターフェース。
+            // 2. 使う側からみた振る舞い(メソッド)の共通化が行いたいならインターフェース。
             //    共通化したい対象がインスタンスなら抽象クラス。(抽象化でも良いけど多分共通化の方が分かりやすい)
             //
             //    インスタンスというかクラスはフィールドを持つ関係で状態が内包されていると考え、
-            //    その状態含めて振る舞いを共通化したい場合と考えりゃいんじゃねぇかなと
+            //    その状態含めて振る舞いを共通化したい場合に抽象クラスを使うと考えりゃいんじゃねぇかなと。
 
             // 例外
             var es = new ExceptSample();
@@ -114,15 +114,15 @@ namespace 初心者向け
             #region 3日目
 
 #if true
-            // クラスメソッドのデリゲート
-            // C# 2.0以前は
+            // クラスメソッドのデリゲート。
+            // C# 2.0以前は、
             // CSharpSample3_1.DelegateSample.IntReturn Funct1 = new CSharpSample3_1.DelegateSample.IntReturn(CSharpSample3_1.DelegateSample.MulInt);
-            // と書きました。が、今は作成済みのインスタンスのメソッドを指定する時とか以外は↓の方が簡単なので、↓使えばよし
+            // と書きました。が、今は作成済みのインスタンスのメソッドを指定する時とか以外は↓の方が簡単なので、↓使えばよし。
             CSharpSample3_1.DelegateSample.IntReturn Funct1 = CSharpSample3_1.DelegateSample.MulInt;
             Console.WriteLine(Funct1(5));
-            // -=や+=を使えば自由にデリゲートを追加したり外したりできる。ただし、気を付けるのは
+            // -=や+=を使えば自由にデリゲートを追加したり外したりできる。ただし、気を付けるのは、
             // 宣言しただけの状態ではデリゲートはnullになっているということ。
-            // 実際に使う際は nullチェックをするか何もしない匿名メソッドなどを用意してnull例外が発生しないようにしないといけない
+            // 実際に使う際は nullチェックをするか何もしない匿名メソッドなどを用意してnull例外が発生しないようにしないといけない。
             Funct1 -= CSharpSample3_1.DelegateSample.MulInt;
             Funct1 += CSharpSample3_1.DelegateSample.MulInt;
 
@@ -134,7 +134,7 @@ namespace 初心者向け
             var receiver = new CSharpSample3_1.Receiver();
             button.DoEvent += receiver.ReceivedEvent;
 
-            //button.DoEvent -= receiver.ReceivedEvent; null条件演算子がどう働くのかはコメントを付けたり外したりで調べてみ
+            //button.DoEvent -= receiver.ReceivedEvent; // null条件演算子がどう働くのかはコメントを付けたり外したりで調べてみ。
             // イベント発生！
             button.Clicked("Main-イベント発生サンプル ");
 
