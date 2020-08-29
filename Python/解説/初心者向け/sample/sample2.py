@@ -10,7 +10,7 @@ import inspect
 import os
 
 def sample2_base():
-    """講座2日目で使う関数を呼び出す母体
+    """講座2日目で使う関数を呼び出す母体。
 
     引数:
     なし
@@ -23,7 +23,7 @@ def sample2_base():
 
 
 def control_method():
-    """ifとかforとかそういうの
+    """ifとかforとかそういうの。
 
     引数:
     なし
@@ -35,13 +35,13 @@ def control_method():
     if MIN_VALUE <= 5 <= MAX_VALUE:
         print("複数条件は並べて書く")
 
-    # 条件演算は直感的じゃないね
+    # 条件演算(前に書いた3項演算子みたいな奴)は直感的じゃないね。
     z = 10 if "a" in "abc" else 15  # 条件成立なのでz=10
     z = 10 if "x" in "abc" else 15  # 条件不成立なのでz=15
 
     # whileとelse
-    # 条件が成立してる間はループする。elseがあったらループ後に実行される
-    # do-whileはない
+    # 条件が成立してる間はループする。elseがあったらループ後に実行される。
+    # do-whileはない。
     n = 0
     while n < 10:
         print(n)
@@ -50,7 +50,7 @@ def control_method():
         print("終了")
 
     # forとelse
-    # elseはwhileと同じ。forはイテレータ的かつ全部舐めていく用途じゃないかなぁ
+    # elseはwhileと同じでループ後に実行。forはイテレータ的かつ全部舐めていく用途じゃないかなぁ。
     for n in (1, 2, 3, "abc"):  # for 取り出した値を格納する変数 in コンテナ:
         print(n)
     else:
@@ -61,20 +61,20 @@ def control_method():
         print(n)
 
     # breakとcontinueは他の言語と同じ。
-    # 最も内側のループから抜ける、先頭に戻る
+    # 最も内側のループから抜ける、先頭に戻る。
 
-    # あ、そうそうswitch-caseもない
+    # あ、そうそうswitch-caseもない。
 
 
 def exception_sample():
-    """例外
+    """例外。
 
     引数:
     なし
     """ 
     str = "ABC"
     try:
-        c = str[5]  # ない場所にアクセスしてIndexError例外を発生させる
+        c = str[5]  # データが存在しない場所にアクセスしてIndexError例外を発生させる。
     except IndexError:
         print("例外キャッチ")
     else:
@@ -84,21 +84,21 @@ def exception_sample():
 
     try:
         try:
-            raise Exception("エラー")   # raiseで例外を発生させる
+            raise Exception("エラー")   # raiseで例外を発生させる。
         except Exception as e:
             print("type:{0}".format(type(e)))
             print("args:{0}".format(e.args))
             print("{0}".format(e))
-            raise   # 再度例外を発生。直近に発生した例外を再度発生。例外がなかったらTypeError例外になる
+            raise   # 再度例外を発生。直近に発生した例外を再度発生。例外がなかったらTypeError例外になる。
         except (KeyError, FileNotFoundError) as e:
             print("ここはこないけど、こうやって複数の例外を指定することもできる")
-    except: # 全て捕捉できる。あまり使うならしい
-        # as eの付け方が分からないので他の方法を使う
-        traceback.print_exc()   # スタック情報を表示
-        print(sys.exc_info())   # 処理中の例外を表示
+    except: # 全て捕捉できる。あまり使うならしい。
+        # as eの付け方が分からないので他の方法を使う。
+        traceback.print_exc()   # スタック情報を表示。
+        print(sys.exc_info())   # 処理中の例外を表示。
 
-    # 後で説明するクラスを使って独自例外を作ることも可能
-    # 内部関数(複数戻り値)、内部クラスとか勝手に使ってますけど、後で書きます。今は無視で
+    # 後で説明するクラスを使って独自例外を作ることも可能。
+    # 内部関数(複数戻り値)、内部クラスとか勝手に使ってますけど、後で書きます。今は無視で。
     class MyExceptionError(Exception):
         def __init__(self, file, func, lineno):
             self.file = file
@@ -119,14 +119,14 @@ def exception_sample():
 
 
 def with_etc():
-    """withとかそういうの
+    """withとかそういうの。
 
     引数:
     なし
     """
 
-    # withブロックが終了したらオブジェクトの終了処理が呼ばれる
-    # C#のusingなんとかと同じ
+    # withブロックが終了したらオブジェクトの終了処理が呼ばれる。
+    # C#のusingなんとか、Javaのfinallyなんとかと同じ。
     try:
         with open("test.txt") as file:
             print(file.read())
@@ -139,28 +139,30 @@ def with_etc():
 
     # assertは省略
 
-    # passは関数やクラスの中身がないと指定します。ユニットテストとかで使う以外は
-    # ダックタイピングで使うんだろうねぇ
+    # passは関数やクラスの中身がないと指定します。ユニットテストとかで使う以外は、
+    # ダックタイピングで使うんだろうねぇ。
     def my_func():
         pass
 
     my_func()
 
-    # delとするとオブジェクトが削除されます
+    # delとするとオブジェクトが削除されます。
     x = 5
     del x
 
-    # execってのがあるらしい
-    # 引数の文字列をPythonのスクリプトとして実行するらしいが
-    # 最小行のコードを競う大会とかでしか使うことない気がするのでパス
+    # execってのがあるらしい。
+    # 引数の文字列をPythonのスクリプトとして実行するらしいが、
+    # 最小行のコードを競う大会とかでしか使うことない気がするのでパス。
 
 
 def func_():
     """
-    やっと関数の説明。あ、今まで説明してなかったけど、
-    関数の先頭に書いてるこれはdocstringっていうものらしい。関数コメントみたいなもんかな
-    これを書いておくと呼び出し側の関数にマウスかざしたり、インテリセンスが動いた時に見えるよ.
-    色々試したら複数行書いた場合、このインデントの方がインテリセンスは見やすい。
+    やっと関数の説明。
+
+    あ、今まで説明してなかったけど、
+    関数の先頭に書いてるこれはdocstringっていうものらしい。関数コメントみたいなもんかな？
+    これを書いておくと呼び出し側の関数にマウスポインタを重ねたり、インテリセンスが動いた時に書いた内容が見れるよ。
+    色々試した結果、複数行書いた場合、このインデントの方がインテリセンスは見やすい。
     なんかこのdocstringは標準の書き方がないっぽいので、以後複数行はインテリセンスで見やすいこの形にします
 
     引数:
@@ -169,10 +171,10 @@ def func_():
 
     # 基本的なことは最初に書いたし、バンバン使ってるので今更感が強いのだが。。。
 
-    # あ、Pythonは関数内部に関数かけまっせ。内部に書くと外部からは参照できません
+    # あ、Pythonは関数内部に関数かけまっせ。内部に書くと外部からは参照できません。
     def internal_func():
         pass
-    internal_func() # 内部同士なら普通に見れる
+    internal_func() # 内部同士なら普通に呼び出せる。
 
     # キーワード付き引数とデフォルト値
     def repeat_word(msg="Bunya", repeat=3):
@@ -186,11 +188,11 @@ def func_():
             print(msg)
 
     # このように引数名を指定するので順番が違っていても良い。今回の関数はどちらも
-    # デフォルト値を与えているので不要なら与えなくて良い
+    # デフォルト値を与えているので不要なら与えなくて良い。
     repeat_word(repeat=4,msg="hello")
 
     # 複数の戻り値があるならreturnで,区切りで書いちゃいな。
-    # return (a, b) or return a, b でOK
+    # return (a, b) or return a, b でOK。
     def multiple_return():
         """複数戻り値の例
 
@@ -200,10 +202,10 @@ def func_():
         return 1, 2, "str"
 
     # 標準だとタプルで返してくるが()を[]に変えてリストにすることもできる。
-    # 数が増えるとNamed tupleとかを使うことを検討した方がいい
+    # 数が増えるとNamed tupleとかを使うことを検討した方がいいらしい。
     result = multiple_return()
     print(result[2])
-    multi1, multi2, multi3 = multiple_return()  # アンパックして別々の変数に入れるのも可能
+    multi1, multi2, multi3 = multiple_return()  # アンパックして別々の変数に入れるのも可能。
     print(multi3)
 
     # 可変引数？
@@ -223,35 +225,36 @@ def func_():
         print(params)
 
     variable_args("a", 123, 4, b1="b1", b2="b2")
-    # 変数使って渡すならこう
+    # 変数使って渡すならこう。
     args = (14, 32)
     params = {"c1":"c1", "c2":"c2"}
-    variable_args("b", *args, **params) # この場合渡す側でも*や**が必要
+    variable_args("b", *args, **params) # この場合、呼び出し側でも*や**が必要。
 
-    # 引数の値渡し、参照渡しについて
+    # "引数の値渡し、参照渡しについて"
     # 全部参照渡し。だけど変更可能(mutable)な型のみ書き換え可能。
     # 変更不可(immutable)な型： int, float, str, タプル, bytes, frozensetなど
     # 変更可能(mutable)な型： リスト, 辞書, set, bytearrayなど
     #
-    # 変更可能な型で別のオブジェクト用意して利用したいなぁって場合はimport copy + copy.deepcopy()を使えばいいみたい
+    # 変更可能な型で別のオブジェクト用意して利用したいなぁって場合はimport copy + copy.deepcopy()を使えばいいみたい。
     #
-    # ちなみにデフォルト引数は、関数やクラスが作成された時に一度だけ作成されるもののようなので
-    # immutableな型を指定するのを推奨だそうです
+    # ちなみにデフォルト引数は、関数やクラスが作成された時に一度だけ作成されるもののようなので、
+    # immutableな型を指定するのを推奨だそうです。
 
 
-# グローバル変数の説明用に
+# グローバル変数の説明用に。
 global_count1 = 11
 global_count2 = 15
 
 def global_var():
-    """グローバル変数とやらを
+    """グローバル変数とやらを。
 
     引数:
     なし
     """
 
-    # 関数の外で宣言された変数はグローバル変数として扱われます
-    print(global_count1)    # こんな感じで参照できる
+    # 関数の外で宣言された変数はグローバル変数として扱われます。
+    print(global_count1)    # こんな感じで参照できる。
+
     # ただし、もしこのグローバル変数に値を入れたくなったら！
     # globalと宣言する必要があります
     #global_count1 = 12 # ここで怒られます。なんせグローバル変数に代入してますから
@@ -259,7 +262,7 @@ def global_var():
 
     # それでglobalですが、一つ注意が。
     # 参照とかしてるのが先にあるとローカル変数として扱われるので、
-    # global宣言できません。使うなら関数の先頭に置いた方が無難だろう
+    # global宣言できません。書き換えるなら関数の先頭にまとめて書いた方が無難だろう。
     global global_count2
     global_count2 = 12
     print(global_count2)
