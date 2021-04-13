@@ -111,6 +111,7 @@ namespace CSharpSample2_1
     {
         /// <summary>
         /// こちらは関数実体を実装しないとコンパイルエラーになる。
+        /// なぜならこのクラスは抽象クラスなので。
         /// </summary>
         public void Print()
         {
