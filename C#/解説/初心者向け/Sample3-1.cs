@@ -144,16 +144,16 @@ namespace CSharpSample3_1
     {
         public void Func1()
         {
-            // 意味なく↓でラムダ使うからね
-            // 分かりやすくするため匿名メソッドと同じ処理にする
+            // 意味なく↓でラムダ使うからね。
+            // 分かりやすくするため匿名メソッドと同じ処理にする。
             string str = "TEST";
             Func<string, int> lambdaFunc = (string value) =>
             {
                 return value.Length;
             };
             Console.WriteLine(lambdaFunc(str));
-            // ただ、実際には型推論とかあるので↑の場合、多分MSDNとかWeb上では
-            // このように書かれるはず(複数の引数とかあれば別なんだけどね。一言。書式に慣れてねハートw)
+            // ただ、実際には型推論とかあるので↑の場合、多分MSDNとかWeb上では、
+            // ↓のように書かれるはず(複数の引数とかあれば別なんだけどね。書式に慣れてねハートw)
             // Func<string, int> lambdaFunc = value => value.Length
             //                                引数      戻り値. returnがなければ型推論
         }

@@ -16,13 +16,13 @@ namespace CSharpSample4_1
 {
     #region LINQ
 
-    // ふはは。LINQです。正式名称は忘れた
-    // SQLとの親和を考えて採用された機能らしいが、今やそんなこと関係なしに使われる機能
-    // XMLとも複雑に絡んでるしね
+    // ふはは。LINQです。正式名称は忘れた。
+    // SQLとの親和を考えて採用された機能らしいが、今やそんなこと関係なしに使われる機能。
+    // XMLとも複雑に絡んでるしね。
     // 一応 C#3.0(Visual Studio 2008)から使えるよ。もう10年以上たつから当たり前のように使われるし、
     // 逆に理解できないなら10年前の技術から取り残されている可能性も・・・
 
-    // まぁ、LINQにも色々あるのですが、基本となるselect, where, sort, aggregateを紹介してみますか
+    // まぁ、LINQにも色々あるのですが、基本となるselect, where, sort, aggregateを紹介してみますか。
 
     public class LINQSsmple
     {
@@ -178,8 +178,8 @@ namespace CSharpSample4_1
                 try
                 {
                     // ↓最後のusingの使用方法。
-                    // 実際はusing() {}の最後にDisposeメソッドが呼ばれるように自動展開される。
-                    // よって、スコープの終わりではStreamWriterは解放される。
+                    // using() {}の最後にStreamWriterのDisposeメソッドが呼ばれるように自動展開される。
+                    // よって、スコープの終わりでStreamWriterは解放される。
                     // ファイルとかは確実にメソッド内で閉じたい場合がほとんどだろうから、その辺にはよく使う。
                     // ファイルを作って書き込んじゃうので安全な場所(=ファイルパス)でやってね！
                     using (var sw = new System.IO.StreamWriter("test.txt"))
