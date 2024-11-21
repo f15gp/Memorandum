@@ -1,5 +1,5 @@
 /**
- * Javaの勉強 1日目
+ * Javaの勉強 1日目(メソッド、引数、制御構文(if, switch, for))
  * 
  * @version 1.0.0
  * @author f15gp
@@ -52,7 +52,9 @@ public class App {
      * Mainメソッド<br>
      * アプリに一つは存在しないといけないメソッド。<br>
      * メソッドとはなにか？これについては後ほど書きます。
-     * publicやstaticも後ほど・・・
+     * publicやstaticも後ほど・・・<br>
+     * ちなみに@paramと@returnを書いたり書かなかったりするのは、<br>
+     * 戻り値がないまたは引数がない場合に書いてしまうとjavadocでhtmlを作成するときに警告されるから。
      * 
      * @param args 起動時に与えられたコマンドの配列
      */ 
