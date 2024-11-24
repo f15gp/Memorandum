@@ -2,7 +2,7 @@
  * Javaの勉強 2日目(パッケージの説明だけ)
  * 
  * @version 1.0.0
- * @author f15gp
+ * @author Bunya
  */
 
 //package packA;

@@ -2,7 +2,7 @@
  * Javaの勉強 1日目(メソッド、引数、制御構文(if, switch, for))
  * 
  * @version 1.0.0
- * @author f15gp
+ * @author Bunya
  */
 
 // Java 5日である程度モダン？なJavaが書けるようになります(Lv5想定)
