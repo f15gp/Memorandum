@@ -18,8 +18,9 @@ class SubA {
      * 引数で与えられた数を2倍にして返すメソッド
      * 
      * @param x 計算に使用する値
+     * @return 計算結果
      */ 
-    public int Double(int x) {
+    public int twice(int x) {
         return (x * 2);
     }
 }
@@ -41,7 +42,7 @@ class SubB {
     * private: このクラス内でのみ使用出来る。
     * protected: このクラス内とサブクラス、そして同じパッケージ内のクラスから使用出来る。
     * public: どのクラスからも使用出来る。
-    * まぁメソッドと同じですね。private以外はパッケージが関係してくることに注意。
+    * メソッドと同じですね。private以外はパッケージが関係してくることに注意。
     *
     * (static) ※クラス同様、フィールド修飾子の一部だけどstatic finalって順番で書かれることも多いし説明のしやすさで別項目にした。
     * つければクラスフィールド(またはstaticフィールド)、つけなければインスタンスフィールドとなる。
@@ -62,7 +63,7 @@ class SubB {
     * volatile: フィールドは常にメモリから読まれ(=キャッシュしない)、スレッド間での同期が保証される。マルチスレッドで重要。
     */
     // 変数名の後に=でその値で初期化されます。ただ、これ1.0から可能だったのか、後のバージョンで出来るようになったのか
-    // 不明です。
+    // 分かりません。
     private int x = 1;
     private static int y = 2;
     private int z = initMethod();
@@ -71,7 +72,7 @@ class SubB {
      * コンストラクタ
      * コンストラクタを定義しない場合は自動的にこの引数のないコンストラクタが用意されます。
      * それをデフォルトコンストラクタとか呼んでます。
-     * コンストラクタが呼ばれるのはnewした時です。
+     * コンストラクタが呼ばれるのはnewした時で、役割はフィールドの初期化やクラスに必要な初期化処理を行うことです。
      * 
      */ 
     SubB() {
@@ -102,36 +103,24 @@ class SubB {
 
     private String s;
     // {}が初期化ブロックです。
-    // 
+    // 使いどころは、
+    // 1. 複数のコンストラクタがある場合の共通初期化を書く場合。
+    // 2. インスタンスフィールドの初期化が複雑な場合。ただし、コンストラクタで書いてもよいことは考慮。
+    // 3. (継承を使うなら)スーパークラスの初期化をサブクラスに再実装させない場合。
+    // 呼び出され順は、new->フィールド初期化式->初期化ブロック->コンストラクタです。
     {
         s = "はじめまして";
         System.out.println(s);
     }
 
-    // メソッド引数のfinalについて説明を加える
+	private static String t;
+    // static{}が静的初期化ブロックです。
+    // クラスの最初のインスタンスが作成された時に一度だけ呼び出されます。
+    // 静的フィールドの初期化やクラス全体に共通する初期化処理を書いたりします。
+    //
+    // 呼び出され順は、new->静的初期化ブロック(初回new時のみ)->フィールド初期化式->初期化ブロック->コンストラクタです。
+	static {
+		t = "どーも";
+		System.out.println(t);
+	}
 }
-
-public record Sub(String name, int age){
-}
-
-/*
-interface InterfaceSubA {
-    int Double(int x);
-}
-
-class SubC implements InterfaceSubA {
-
-    //@Override
-    public int Double(int x) {
-        return (x * 2);
-    }
-}
-
-class SubA2 extends SubA {
-    @Override
-    public long Double(long x) {
-        return (x * 3);
-    }
-}
-*/
-
